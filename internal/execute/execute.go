@@ -5,31 +5,30 @@ import (
 	"github.com/hararudoka/gotemplate/internal/delivery/http"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"go.uber.org/zap"
+	"github.com/sirupsen/logrus"
 )
 
 func Execute() {
-	logger, _ := zap.NewProduction()
-	defer logger.Sync()
+	log := logrus.New()
 
 	conf, err := config.LoadConfig("config.yaml")
 	if err != nil {
-		logger.Fatal("Environment loading fails", zap.Error(err))
+		log.Fatal("Environment loading fails")
 	}
 
 	//environment, err := env.LoadEnv(".env")
 	//if err != nil {
-	//	logger.Fatal("Environment loading fails", zap.Error(err))
+	//	log.Fatal("Environment loading fails")
 	//}
 
 	//_, err = storage.Open(&environment)
 	//if err != nil {
-	//	logger.Fatal("DB connection dead", zap.Error(err))
+	//	log.Fatal("DB connection dead")
 	//}
 
 	h, err := handler.New()
 	if err != nil {
-		logger.Fatal("Handler init error", zap.Error(err))
+		log.Fatal("Handler init error")
 	}
 
 	e := echo.New()
