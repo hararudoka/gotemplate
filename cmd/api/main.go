@@ -1,5 +1,5 @@
 package main
 
 func main()  {
-	// very cool website starts here yea
+	// very cool api starts here yea
 }

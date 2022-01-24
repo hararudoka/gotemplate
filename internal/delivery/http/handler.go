@@ -1,7 +1,7 @@
 package handler
 
 type Handler struct {
-	// here some useful variables - *sqlx.DB or some Configs
+	HelloHandler HelloHandler
 }
 
 // New creates new handler
